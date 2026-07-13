@@ -1,0 +1,193 @@
+/* ---------- 1. VARIABLES CSS (PALETTE ROSE) & THEME SOMBRE ---------- */
+:root {
+  /* Couleurs principales : palette rose */
+  --clr-bg: #fff5f8;          /* fond général, rose très clair */
+  --clr-bg-alt: #ffe4ec;      /* fond alterné, rose pâle */
+  --clr-surface: #ffffff;     /* cartes et blocs */
+  --clr-text: #2b1620;        /* texte principal */
+  --clr-text-muted: #7a5468;  /* texte secondaire */
+  --clr-primary: #ff4f81;     /* rose vif - boutons, accents */
+  --clr-primary-dark: #d6336c;
+  --clr-secondary: #ff8fab;   /* rose doux */
+  --clr-accent: #c9184a;      /* rose foncé - contrastes, hover */
+  --clr-border: rgba(43, 22, 32, 0.12);
+
+  /* Polices */
+  --font-title: "Playfair Display", serif;
+  --font-text: "Nunito", sans-serif;
+
+  /* Espacements */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+
+  /* Arrondis et ombres */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --shadow-sm: 0 2px 10px rgba(43, 22, 32, 0.08);
+  --shadow-md: 0 10px 28px rgba(43, 22, 32, 0.14);
+
+  /* Vitesse des transitions */
+  --transition: 0.25s ease;
+
+  color-scheme: light;
+}
+
+/* Thème sombre : ajouté par le JavaScript sur la balise <html> */
+[data-theme="dark"] {
+  --clr-bg: #241119;
+  --clr-bg-alt: #2f1620;
+  --clr-surface: #331621;
+  --clr-text: #ffe4ec;
+  --clr-text-muted: #d99cb0;
+  --clr-primary: #ff6f9c;
+  --clr-primary-dark: #ff4f81;
+  --clr-secondary: #ffa8c5;
+  --clr-accent: #ff8fab;
+  --clr-border: rgba(255, 228, 236, 0.15);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+/* ---------- 2. RESET ET REGLES GENERALES ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-text);
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  line-height: 1.6;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+section {
+  padding: var(--space-xl) var(--space-md);
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+}
+
+/* Contour visible au clavier, pour l'accessibilité */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--clr-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. TYPOGRAPHIE ---------- */
+h1, h2, h3 {
+  font-family: var(--font-title);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.6rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: 3.4rem; }
+  h2 { font-size: 2.4rem; }
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--clr-primary-dark);
+}
+
+.eyebrow {
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--clr-accent);
+  margin-bottom: var(--space-sm);
+}
+
+/* ---------- 4. BOUTONS ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.btn--primary {
+  background: var(--clr-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--ghost {
+  border: 2px solid var(--clr-primary);
+  color: var(--clr-primary-dark);
+}
+
+.btn--ghost:hover {
+  background: var(--clr-bg-alt);
+  transform: translateY(-3px);
+}
