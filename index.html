@@ -15,128 +15,122 @@
   <!-- Notre feuille de style -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="top">
 
-  <!-- ============ NAVBAR ============ -->
-  <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="index.html" class="navbar-logo">
-          <i class="bi bi-globe-africa"></i> AfriConnect Summit 2026
-        </a>
+ <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar__inner">
+     <a href="index.html" class="navbar__logo">
+  <div class="logo-icon"></div> <!-- ton carré rose de gauche -->
+  AfriConnect<span>Summit</span>
+  <span class="logo-year">2026</span> <!-- celui qu'on ajoute -->
+</a>
 
-        <ul class="navbar-links">
-          <li><a href="index.html" class="active">Accueil</a></li>
-          <li><a href="programme.html">Programme</a></li>
-          <li><a href="intervenants.html">Intervenants</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
 
-        <div class="navbar-actions">
-          <button class="theme-toggle" aria-label="Changer de thème">
-            <i class="bi bi-moon-stars"></i>
-          </button>
-          <button class="hamburger" aria-label="Ouvrir le menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="programme.html">Programme</a></li>
+        <li><a href="intervenants.html">Intervenants</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="navbar__actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Basculer le mode sombre">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+        <button id="burger" class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
 
   <main>
     <!-- ============ SECTION HERO ============ -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="container hero-content">
-        <h1 class="hero-title">L'avenir de la tech <span>africaine</span> se construit ici</h1>
-        <p class="hero-subtitle">
+        <p class="hero__subtitle">
           Dakar, Sénégal &middot; 15 - 17 Mars 2027
         </p>
-
-        <div class="hero-buttons">
-          <a href="contact.html" class="btn btn-primary">S'inscrire maintenant</a>
-          <a href="programme.html" class="btn btn-outline">Voir le programme</a>
+        <h1 class="hero__title">L'avenir de la tech <span>africaine</span> se construit ici</h1>
+       
+        <div class="hero__cta">
+          <a href="contact.html" class="btn btn--primary">S'inscrire maintenant</a>
+          <a href="programme.html" class="btn btn--ghost">Voir le programme</a>
         </div>
 
-        <!-- Compte à rebours en temps réel -->
-        <div class="countdown">
-          <div class="countdown-item">
-            <div class="countdown-number" id="cd-days">00</div>
-            <div class="countdown-label">Jours</div>
+        <!-- Compte à rebours -->
+        <div class="countdown" id="countdown" aria-label="Compte à rebours avant la conférence">
+          <div class="countdown__item">
+            <span class="countdown__value" id="cd-days">00</span>
+            <span class="countdown__label">Jours</span>
           </div>
-          <div class="countdown-item">
-            <div class="countdown-number" id="cd-hours">00</div>
-            <div class="countdown-label">Heures</div>
+          <div class="countdown__item">
+            <span class="countdown__value" id="cd-hours">00</span>
+            <span class="countdown__label">Heures</span>
           </div>
-          <div class="countdown-item">
-            <div class="countdown-number" id="cd-minutes">00</div>
-            <div class="countdown-label">Minutes</div>
+          <div class="countdown__item">
+            <span class="countdown__value" id="cd-minutes">00</span>
+            <span class="countdown__label">Minutes</span>
           </div>
-          <div class="countdown-item">
-            <div class="countdown-number" id="cd-seconds">00</div>
-            <div class="countdown-label">Secondes</div>
+          <div class="countdown__item">
+            <span class="countdown__value" id="cd-seconds">00</span>
+            <span class="countdown__label">Secondes</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ SECTION CHIFFRES CLÉS ============ -->
-    <section class="stats">
-      <div class="container">
-        <h2 class="section-title">AfriConnect Summit en chiffres</h2>
-        <p class="section-subtitle">Un événement qui grandit chaque année</p>
-
-        <div class="stats-grid">
-          <div class="stat-card reveal">
-            <div class="stat-number" data-target="1200">0</div>
-            <p class="stat-label">Participants</p>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-number" data-target="48">0</div>
-            <p class="stat-label">Intervenants</p>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-number" data-target="3">0</div>
-            <p class="stat-label">Jours de conférence</p>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-number" data-target="12">0</div>
-            <p class="stat-label">Pays représentés</p>
-          </div>
-        </div>
+   <!-- ============ CHIFFRES CLÉS ============ -->
+    <section class="stats" aria-label="Chiffres clés">
+      <div class="stats__grid">
+        <article class="stat reveal">
+          <span class="stat__number" data-target="1200">0</span>
+          <p class="stat__label">Participants</p>
+        </article>
+        <article class="stat reveal">
+          <span class="stat__number" data-target="48">0</span>
+          <p class="stat__label">Intervenants</p>
+        </article>
+        <article class="stat reveal">
+          <span class="stat__number" data-target="3">0</span>
+          <p class="stat__label">Jours</p>
+        </article>
+        <article class="stat reveal">
+          <span class="stat__number" data-target="12">0</span>
+          <p class="stat__label">Pays représentés</p>
+        </article>
       </div>
     </section>
 
     <!-- ============ SECTION POURQUOI PARTICIPER ============ -->
-    <section class="why">
+    <section class="why" id="why">
       <div class="container">
         <h2 class="section-title">Pourquoi participer ?</h2>
         <p class="section-subtitle">Trois bonnes raisons de nous rejoindre</p>
 
-        <div class="why-list">
-          <article class="why-card reveal slide-left">
-            <div class="why-icon"><i class="bi bi-people-fill"></i></div>
+       <div class="why__grid">
+          <article class="why__card reveal">
+          <i class="bi bi-diagram-3" aria-hidden="true"></i>
             <h3>Réseautage</h3>
             <p>Rencontrez des développeurs, entrepreneurs et investisseurs venus de tout le continent.</p>
           </article>
 
-          <article class="why-card reveal">
-            <div class="why-icon"><i class="bi bi-lightbulb-fill"></i></div>
+          <article class="why__card reveal">
+          <i class="bi bi-lightbulb" aria-hidden="true"></i>
             <h3>Innovation</h3>
             <p>Découvrez les dernières tendances technologiques présentées par des experts africains.</p>
           </article>
 
-          <article class="why-card reveal slide-right">
-            <div class="why-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <article class="why__card reveal">
+          <i class="bi bi-rocket-takeoff" aria-hidden="true"></i>
             <h3>Opportunités</h3>
             <p>Trouvez des partenaires, des financements et des idées pour faire grandir votre projet.</p>
           </article>
         </div>
       </div>
     </section>
-
+    
     <!-- ============ SECTION INTERVENANTS VEDETTES ============ -->
     <section class="featured-speakers">
       <div class="container">
@@ -145,7 +139,7 @@
 
         <div class="speakers-grid">
           <article class="speaker-card reveal">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=11" alt="Photo de Aminata Diallo">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/7e/26/63/7e2663f01acec4fe8f33c7e89d717472.jpg" alt="Photo de Aminata Diallo">
             <div class="speaker-info">
               <h3 class="speaker-name">Aminata Diallo</h3>
               <p class="speaker-role">Fondatrice, TechForAfrica</p>
@@ -154,7 +148,7 @@
           </article>
 
           <article class="speaker-card reveal">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=12" alt="Photo de Kwame Mensah">
+            <img class="speaker-photo" src="https://i.pinimg.com/1200x/29/e7/c3/29e7c3550ef44779834e2e659fb9c5db.jpg" alt="Photo de Kwame Mensah">
             <div class="speaker-info">
               <h3 class="speaker-name">Kwame Mensah</h3>
               <p class="speaker-role">CTO, DataWave Africa</p>
@@ -163,7 +157,7 @@
           </article>
 
           <article class="speaker-card reveal">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=13" alt="Photo de Fatima El Amrani">
+            <img class="speaker-photo" src="https://i.pinimg.com/1200x/e3/47/8e/e3478ebca5f44b7d3a1fe7093977bafa.jpg" alt="Photo de Fatima El Amrani">
             <div class="speaker-info">
               <h3 class="speaker-name">Fatima El Amrani</h3>
               <p class="speaker-role">Investisseuse, Atlas Ventures</p>
@@ -172,7 +166,7 @@
           </article>
 
           <article class="speaker-card reveal">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=14" alt="Photo de Chidi Okafor">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/72/ae/de/72aede4ed6f10a973bf660ebbad4ac8c.jpg" alt="Photo de Chidi Okafor">
             <div class="speaker-info">
               <h3 class="speaker-name">Chidi Okafor</h3>
               <p class="speaker-role">Ingénieur IA, Lagos Labs</p>
@@ -187,68 +181,69 @@
       </div>
     </section>
 
-    <!-- ============ SECTION SPONSORS ============ -->
-    <section class="sponsors-section">
-      <div class="container">
-        <h2 class="section-title">Nos sponsors</h2>
-        <p class="section-subtitle">Merci à nos partenaires qui rendent cet événement possible</p>
-
-        <div class="sponsors">
-          <div class="sponsor-tier">
-            <h3>Or</h3>
-            <div class="sponsor-badge gold">SponsorOr</div>
-          </div>
-          <div class="sponsor-tier">
-            <h3>Argent</h3>
-            <div class="sponsor-badge silver">SponsorArgent</div>
-          </div>
-          <div class="sponsor-tier">
-            <h3>Bronze</h3>
-            <div class="sponsor-badge bronze">SponsorBronze</div>
-          </div>
+    <!-- ============ SPONSORS ============ -->
+    <section class="sponsors" id="sponsors">
+      <h2 class="section-title reveal">Nos partenaires</h2>
+      <div class="sponsors__tier reveal">
+        <p class="sponsors__level">Or</p>
+        <div class="sponsors__logos sponsors__logos--gold">
+          <span>Baobab Tech</span><span>Sahel Ventures</span>
+        </div>
+      </div>
+      <div class="sponsors__tier reveal">
+        <p class="sponsors__level">Argent</p>
+        <div class="sponsors__logos sponsors__logos--silver">
+          <span>Kente Cloud</span><span>Nile Analytics</span><span>Teranga Bank</span>
+        </div>
+      </div>
+      <div class="sponsors__tier reveal">
+        <p class="sponsors__level">Bronze</p>
+        <div class="sponsors__logos sponsors__logos--bronze">
+          <span>Zebra Hosting</span><span>Acacia Studio</span><span>Delta Robotics</span><span>Kilimanjaro Labs</span>
         </div>
       </div>
     </section>
   </main>
 
   <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="container">
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h4>AfriConnect Summit</h4>
-          <p>Le rendez-vous annuel de la tech panafricaine. Dakar, Sénégal.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <a href="index.html">Accueil</a>
-          <a href="programme.html">Programme</a>
-          <a href="intervenants.html">Intervenants</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Suivez-nous</h4>
-          <div class="social-icons">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          </div>
-        </div>
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+       <div class="logo-icon"></div> <!-- ton carré rose de gauche -->
+  AfriConnect<span>Summit</span>
+  <span class="logo-year">2026</span> 
+        <p>Le sommet tech qui connecte le continent, une conférence à la fois.</p>
       </div>
-
-      <div class="footer-bottom">
-        <p>&copy; <span id="current-year"></span> AfriConnect Summit. Tous droits réservés.</p>
+      <div class="footer__col">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="programme.html">Programme</a></li>
+          <li><a href="intervenants.html">Intervenants</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3>Suivez-nous</h3>
+        <div class="footer__socials">
+          <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
       </div>
     </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> AfriConnect Summit. Tous droits réservés.</p>
+      <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+        <i class="bi bi-arrow-up"></i>
+      </button>
+    </div>
   </footer>
-
-  <button class="back-to-top" aria-label="Retour en haut">
-    <i class="bi bi-arrow-up"></i>
-  </button>
-
+<a href="#top" class="back-to-top" aria-label="Retour en haut">
+  <i class="bi bi-arrow-up"></i>
+</a>
   <script src="js/main.js"></script>
+  
 </body>
 </html>

@@ -10,32 +10,31 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="top">
 
-  <header>
-    <nav class="navbar">
-      <div class="container">
-        <a href="index.html" class="navbar-logo">
-          <i class="bi bi-globe-africa"></i> AfriConnect Summit 2026
-        </a>
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+  <div class="logo-icon"></div> <!-- ton carré rose de gauche -->
+  AfriConnect<span>Summit</span>
+  <span class="logo-year">2026</span> <!-- celui qu'on ajoute -->
+</a>
 
-        <ul class="navbar-links">
-          <li><a href="index.html">Accueil</a></li>
-          <li><a href="programme.html">Programme</a></li>
-          <li><a href="intervenants.html" class="active">Intervenants</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="programme.html">Programme</a></li>
+        <li><a href="intervenants.html">Intervenants</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
 
-        <div class="navbar-actions">
-          <button class="theme-toggle" aria-label="Changer de thème">
-            <i class="bi bi-moon-stars"></i>
-          </button>
-          <button class="hamburger" aria-label="Ouvrir le menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+      <div class="navbar__actions">
+        <button id="themeToggle" class="theme-toggle" aria-label="Basculer le mode sombre">
+          <i class="bi bi-moon-stars-fill"></i>
+        </button>
+        <button id="burger" class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
@@ -54,6 +53,7 @@
       <div class="container">
         <h2 class="section-title">Nos 9 intervenants</h2>
         <p class="section-subtitle">Filtrez par thématique pour trouver les experts qui vous intéressent</p>
+        <br>
 
         <div class="filters">
           <button class="filter-btn active" data-filter="tous">Tous</button>
@@ -62,10 +62,11 @@
           <button class="filter-btn" data-filter="design">Design</button>
           <button class="filter-btn" data-filter="data">Data</button>
         </div>
+        <br>
 
         <div class="speakers-grid-full">
           <article class="speaker-card" data-category="ia-tech">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=13" alt="Photo de Chidi Okafor">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/72/ae/de/72aede4ed6f10a973bf660ebbad4ac8c.jpg" alt="Photo de Chidi Okafor">
             <div class="speaker-info">
               <h3 class="speaker-name">Chidi Okafor</h3>
               <p class="speaker-role">Ingénieur IA, Lagos Labs</p>
@@ -74,7 +75,7 @@
           </article>
 
           <article class="speaker-card" data-category="business">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=11" alt="Photo de Aminata Diallo">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/7e/26/63/7e2663f01acec4fe8f33c7e89d717472.jpg" alt="Photo de Aminata Diallo">
             <div class="speaker-info">
               <h3 class="speaker-name">Aminata Diallo</h3>
               <p class="speaker-role">Fondatrice, TechForAfrica</p>
@@ -83,7 +84,7 @@
           </article>
 
           <article class="speaker-card" data-category="business">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=15" alt="Photo de Fatima El Amrani">
+            <img class="speaker-photo" src="https://i.pinimg.com/1200x/e3/47/8e/e3478ebca5f44b7d3a1fe7093977bafa.jpg" alt="Photo de Fatima El Amrani">
             <div class="speaker-info">
               <h3 class="speaker-name">Fatima El Amrani</h3>
               <p class="speaker-role">Investisseuse, Atlas Ventures</p>
@@ -92,7 +93,7 @@
           </article>
 
           <article class="speaker-card" data-category="design">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=14" alt="Photo de Kwame Mensah">
+            <img class="speaker-photo" src="https://i.pinimg.com/1200x/29/e7/c3/29e7c3550ef44779834e2e659fb9c5db.jpg" alt="Photo de Kwame Mensah">
             <div class="speaker-info">
               <h3 class="speaker-name">Kwame Mensah</h3>
               <p class="speaker-role">CTO, DataWave Africa</p>
@@ -101,7 +102,7 @@
           </article>
 
           <article class="speaker-card" data-category="data">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=25" alt="Photo de Nadia Kouyaté">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/1f/9d/99/1f9d9970b2625b05ce20e5f7010c2bf8.jpg" alt="Photo de Nadia Kouyaté">
             <div class="speaker-info">
               <h3 class="speaker-name">Nadia Kouyaté</h3>
               <p class="speaker-role">Data Scientist, Sahel Analytics</p>
@@ -110,7 +111,7 @@
           </article>
 
           <article class="speaker-card" data-category="ia-tech">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=33" alt="Photo de Samuel Osei">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/1c/fe/cf/1cfecfc60b5233f7732ec500b881b801.jpg" alt="Photo de Samuel Osei">
             <div class="speaker-info">
               <h3 class="speaker-name">Samuel Osei</h3>
               <p class="speaker-role">Expert cybersécurité, SecuraGH</p>
@@ -119,7 +120,7 @@
           </article>
 
           <article class="speaker-card" data-category="business">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=32" alt="Photo de Amina Traoré">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/6b/96/c9/6b96c908cd63f4e394c0b6280f452df5.jpg" alt="Photo de Amina Traoré">
             <div class="speaker-info">
               <h3 class="speaker-name">Amina Traoré</h3>
               <p class="speaker-role">Directrice, Women in Tech Africa</p>
@@ -128,7 +129,7 @@
           </article>
 
           <article class="speaker-card" data-category="design">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=51" alt="Photo de Yohannes Bekele">
+            <img class="speaker-photo" src="https://i.pinimg.com/736x/8e/99/5a/8e995a7fb38c8684008ac961fd28b644.jpg" alt="Photo de Yohannes Bekele">
             <div class="speaker-info">
               <h3 class="speaker-name">Yohannes Bekele</h3>
               <p class="speaker-role">Directeur UX, Addis Design Co.</p>
@@ -137,7 +138,7 @@
           </article>
 
           <article class="speaker-card" data-category="data">
-            <img class="speaker-photo" src="https://i.pravatar.cc/400?img=47" alt="Photo de Grace Mwangi">
+            <img class="speaker-photo" src="https://i.pinimg.com/1200x/e8/e4/ba/e8e4ba072142c97db90b39b133c5458a.jpg" alt="Photo de Grace Mwangi">
             <div class="speaker-info">
               <h3 class="speaker-name">Grace Mwangi</h3>
               <p class="speaker-role">Responsable Data, Nairobi Insights</p>
@@ -149,43 +150,45 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-columns">
-        <div class="footer-col">
-          <h4>AfriConnect Summit</h4>
-          <p>Le rendez-vous annuel de la tech panafricaine. Dakar, Sénégal.</p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <a href="index.html">Accueil</a>
-          <a href="programme.html">Programme</a>
-          <a href="intervenants.html">Intervenants</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="footer-col">
-          <h4>Suivez-nous</h4>
-          <div class="social-icons">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          </div>
+ <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <div class="logo-icon"></div> <!-- ton carré rose de gauche -->
+  AfriConnect<span>Summit</span>
+  <span class="logo-year">2026</span> 
+        <p>Le sommet tech qui connecte le continent, une conférence à la fois.</p>
+      </div>
+      <div class="footer__col">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="programme.html">Programme</a></li>
+          <li><a href="intervenants.html">Intervenants</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h3>Suivez-nous</h3>
+        <div class="footer__socials">
+          <a href="#" aria-label="Twitter / X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <p>&copy; <span id="current-year"></span> AfriConnect Summit. Tous droits réservés.</p>
-      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> AfriConnect Summit. Tous droits réservés.</p>
+      <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+        <i class="bi bi-arrow-up"></i>
+      </button>
     </div>
   </footer>
 
-  <button class="back-to-top" aria-label="Retour en haut">
-    <i class="bi bi-arrow-up"></i>
-  </button>
-
+   <a href="#top" class="back-to-top" aria-label="Retour en haut">
+  <i class="bi bi-arrow-up"></i>
+</a>
   <script src="js/main.js"></script>
 </body>
 </html>
