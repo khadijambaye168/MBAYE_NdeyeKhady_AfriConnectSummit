@@ -89,3 +89,127 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ============================================================
+       3. ANIMATIONS AU SCROLL (IntersectionObserver)
+       - Toutes les sections/éléments avec la classe "reveal"
+         reçoivent la classe "reveal--visible" quand ils entrent
+         dans le viewport
+       ============================================================ */
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("reveal--visible");
+                // On arrête d'observer l'élément une fois révélé (évite de refaire l'animation)
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2 // se déclenche quand 20% de l'élément est visible
+    });
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
+
+    /* ============================================================
+       4. COMPTEURS ANIMÉS SUR LES CHIFFRES CLÉS
+       - Chaque chiffre (data-target) s'incrémente progressivement
+         de 0 jusqu'à sa valeur finale, une seule fois, quand la
+         section devient visible à l'écran
+       ============================================================ */
+
+    const statNumbers = document.querySelectorAll(".stat__number");
+
+    // Fonction qui anime un seul compteur de 0 jusqu'à sa valeur cible
+    function animateCounter(element) {
+        const target = parseInt(element.getAttribute("data-target"), 10);
+        const duration = 1500; // durée totale de l'animation en millisecondes
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+            const currentValue = Math.floor(progress * target);
+
+            element.textContent = currentValue;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target; // on affiche la valeur exacte à la fin
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    }
+
+    // Observer dédié aux compteurs : l'animation ne se lance
+    // qu'une seule fois, quand la section stats apparaît à l'écran
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    statNumbers.forEach((stat) => statsObserver.observe(stat));
+
+
+    /* ============================================================
+       5. COMPTE À REBOURS AVANT LA CONFÉRENCE
+       - Calcule le temps restant jusqu'au 15 mars 2027, 09h00
+       - Met à jour l'affichage chaque seconde
+       ============================================================ */
+
+    const countdownEl = document.getElementById("countdown");
+
+    // On ne lance le compte à rebours que si l'élément existe sur la page
+    if (countdownEl) {
+        const dayEl = document.getElementById("cd-days");
+        const hourEl = document.getElementById("cd-hours");
+        const minuteEl = document.getElementById("cd-minutes");
+        const secondEl = document.getElementById("cd-seconds");
+
+        // Date de départ de la conférence
+        const eventDate = new Date("2027-03-15T09:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const remainingTime = eventDate - now;
+
+            // Si la date est déjà passée, on affiche 00 partout
+            if (remainingTime < 0) {
+                dayEl.textContent = "00";
+                hourEl.textContent = "00";
+                minuteEl.textContent = "00";
+                secondEl.textContent = "00";
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            // Conversion du temps restant en jours / heures / minutes / secondes
+            const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            // padStart ajoute un zéro devant si le nombre est inférieur à 10 (ex: 5 -> "05")
+            dayEl.textContent = String(days).padStart(2, "0");
+            hourEl.textContent = String(hours).padStart(2, "0");
+            minuteEl.textContent = String(minutes).padStart(2, "0");
+            secondEl.textContent = String(seconds).padStart(2, "0");
+        }
+
+        updateCountdown(); // premier affichage immédiat
+        const countdownInterval = setInterval(updateCountdown, 1000); // mise à jour chaque seconde
+    }
+
+});
