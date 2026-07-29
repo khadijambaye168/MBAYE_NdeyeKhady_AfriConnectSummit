@@ -391,3 +391,44 @@ if (form) {
     }
   });
 }
+/* =====================================================
+   ANNÉE DYNAMIQUE DANS LE FOOTER (sur les 4 pages)
+===================================================== */
+
+const anneeSpan = document.getElementById("year");
+
+if (anneeSpan) {
+  anneeSpan.textContent = new Date().getFullYear();
+}
+
+
+/* =====================================================
+   BOUTON RETOUR EN HAUT
+===================================================== */
+
+// On récupère tous les boutons "retour en haut" de la page
+const boutonsRetourHaut = document.querySelectorAll(".back-to-top");
+
+// 1. Afficher le(s) bouton(s) après 300px de défilement
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    boutonsRetourHaut.forEach(function (bouton) {
+      bouton.classList.add("show");
+    });
+  } else {
+    boutonsRetourHaut.forEach(function (bouton) {
+      bouton.classList.remove("show");
+    });
+  }
+});
+
+// 2. Remonter en douceur au clic sur un des boutons
+boutonsRetourHaut.forEach(function (bouton) {
+  bouton.addEventListener("click", function (event) {
+    event.preventDefault(); // empêche le lien "#top" de sauter directement
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+});

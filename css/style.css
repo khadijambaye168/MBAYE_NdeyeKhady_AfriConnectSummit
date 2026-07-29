@@ -211,22 +211,33 @@ a {
   width: 100%;
 }
 
-/* BOUTON THEME VISIBLE MAIS DESACTIVE */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--clr-border);
-  font-size: 1.2rem;
-  background: var(--clr-surface);
-  opacity: 0.6;
+/* ---------- 1. DARK MODE ---------- */
+
+/* On assombrit les variables EXISTANTES au lieu d'en créer de nouvelles */
+html[data-theme="dark"] {
+  --clr-bg: #121212;
+  --clr-bg-alt: #1e1e1e;
+  --clr-surface: #1e1e1e;
+  --clr-text: #f0f0f0;
+  --clr-text-muted: #c9b3bd;
+  --clr-border: rgba(255, 255, 255, 0.12);
 }
 
-.burger {
-  display: none;
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--clr-text);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg);
 }
 
 /* ---------- 4. BOUTONS ---------- */
@@ -260,6 +271,7 @@ a {
   transform: translateY(-3px);
 }
 
+
 /* ---------- BOUTON RETOUR HAUT ---------- */
 .back-to-top {
   position: fixed;
@@ -278,12 +290,20 @@ a {
   z-index: 999;
   transition: all var(--transition);
   animation: bounce 2s infinite;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
 }
-
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
 .back-to-top:hover {
   background: var(--clr-primary-dark);
   transform: translateY(-5px);
 }
+
 
 /* ---------- 5. HERO ---------- */
 .hero {
@@ -987,4 +1007,54 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+}
+/* 1. Icônes "Pourquoi participer" dans un cercle rose (plus pro que l'icône seule) */
+.why__card i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--clr-bg-alt);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* 2. Petit zoom doux sur les photos d'intervenants au survol */
+.speaker-photo {
+  transition: transform 0.4s ease;
+}
+.speaker-card:hover .speaker-photo {
+  transform: scale(1.06);
+}
+
+/* 3. Ombre plus douce sur les boutons principaux au survol */
+.btn--primary:hover,
+.btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(255, 79, 129, 0.35);
+}
+
+/* 4. Petit espace visuel entre le titre de section et son soulignement discret */
+.section-title {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+/* 5. Sélection de texte personnalisée (petit détail qui fait "fini") */
+::selection {
+  background: var(--clr-primary);
+  color: #fff;
+}
+
+/* 6. Scrollbar rose discrète (Chrome/Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--clr-bg-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--clr-primary);
+  border-radius: 10px;
 }
