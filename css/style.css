@@ -437,6 +437,34 @@ a {
 }
 
 /* ---------- 8. INTERVENANTS ---------- */
+/* ---------- Filtres des intervenants ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--clr-primary);
+  background: transparent;
+  color: var(--clr-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-btn:hover {
+  background: var(--clr-bg-alt);
+}
+
+.filter-btn.active {
+  background: var(--clr-primary);
+  color: #fff;
+}
 .speakers-grid,
 .speakers-grid-full {
   display: grid;
@@ -529,7 +557,7 @@ a {
   color: var(--clr-primary-dark);
 }
 
-/* ---------- 10. PROGRAMME : ONGLETS CSS PUR AVEC :TARGET ---------- */
+/* ---------- 10. PROGRAMME : ONGLETS (gérés en JavaScript) ---------- */
 .tabs {
   display: flex;
   justify-content: center;
@@ -545,6 +573,7 @@ a {
   font-weight: 700;
   background: transparent;
   color: var(--clr-primary);
+  cursor: pointer;
   transition: all var(--transition);
 }
 
@@ -553,53 +582,18 @@ a {
   transform: translateY(-2px);
 }
 
+.tab-btn.active {
+  background: var(--clr-primary);
+  color: #fff;
+}
+
 .tab-panel {
   display: none;
   animation: fadeInUp 0.5s ease;
 }
 
-#jour1 {
+.tab-panel.active {
   display: block;
-}
-
-/* par défaut */
-.tab-panel:target {
-  display: block;
-}
-
-.tab-panel:target~#jour1 {
-  display: none;
-}
-
-/* cache jour1 si un autre est ciblé */
-
-.schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.schedule-table thead {
-  background: var(--clr-primary-dark);
-  color: #fff;
-}
-
-.schedule-table th,
-.schedule-table td {
-  padding: 1rem;
-  text-align: left;
-}
-
-.schedule-table tbody tr:nth-child(even) {
-  background: var(--clr-bg-alt);
-}
-
-.schedule-table tbody tr:hover {
-  background: var(--clr-secondary);
-  color: #fff;
-  transition: 0.2s;
 }
 
 /* ---------- 11. THEMES ---------- */
@@ -678,6 +672,41 @@ a {
 .form-group input:focus {
   border-color: var(--clr-primary);
   outline: none;
+}
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+  border-color: #dc2626;
+}
+
+.form-group input.valid,
+.form-group select.valid,
+.form-group textarea.valid {
+  border-color: #16a34a;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.85rem;
+  min-height: 18px;
+}
+
+.form-success {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #16a34a;
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.form-success.show {
+  display: flex;
+  animation: fadeInUp 0.4s ease;
 }
 
 .faq-item {
@@ -836,7 +865,7 @@ a {
 }
 
 /* ============================================================
-   COMMIT 5 : Dark/Light mode, navbar dynamique et burger
+   Dark/Light mode, navbar dynamique et burger
    ============================================================ */
 
 /* ---------- 1. DARK MODE ---------- */

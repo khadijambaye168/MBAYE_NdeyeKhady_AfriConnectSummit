@@ -213,3 +213,181 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+/* =====================================================
+   ONGLETS DU PROGRAMME (programme.html)
+   Affiche le planning du jour cliqué, sans recharger la page
+===================================================== */
+
+// On récupère tous les boutons d'onglets et tous les panneaux
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabPanels = document.querySelectorAll(".tab-panel");
+
+// On boucle sur chaque bouton pour lui ajouter un écouteur de clic
+tabButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+
+    // 1. On enlève la classe "active" de TOUS les boutons et panneaux
+    tabButtons.forEach(function (btn) {
+      btn.classList.remove("active");
+    });
+    tabPanels.forEach(function (panel) {
+      panel.classList.remove("active");
+    });
+
+    // 2. On récupère le jour à afficher grâce à l'attribut data-tab
+    const jourCible = button.getAttribute("data-tab");
+
+    // 3. On ajoute la classe "active" au bouton cliqué
+    button.classList.add("active");
+
+    // 4. On ajoute la classe "active" au panneau correspondant
+    const panelCible = document.getElementById(jourCible);
+    if (panelCible) {
+      panelCible.classList.add("active");
+    }
+  });
+});
+/* =====================================================
+   FILTRAGE DYNAMIQUE DES INTERVENANTS (intervenants.html)
+   Affiche/masque les cartes selon la thématique choisie
+===================================================== */
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const speakerCards = document.querySelectorAll(".speaker-card");
+
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+
+    // 1. Gestion du bouton actif (mise en évidence visuelle)
+    filterButtons.forEach(function (btn) {
+      btn.classList.remove("active");
+    });
+    button.classList.add("active");
+
+    // 2. On récupère la catégorie choisie
+    const categorieChoisie = button.getAttribute("data-filter");
+
+    // 3. On parcourt toutes les cartes d'intervenants
+    speakerCards.forEach(function (card) {
+      const categorieCard = card.getAttribute("data-category");
+
+      // Si "Tous" est sélectionné OU si la catégorie correspond -> on affiche
+      if (categorieChoisie === "tous" || categorieChoisie === categorieCard) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+/* =====================================================
+   VALIDATION DU FORMULAIRE D'INSCRIPTION (contact.html)
+===================================================== */
+
+const form = document.getElementById("registration-form");
+
+if (form) {
+  form.addEventListener("submit", function (event) {
+    // On empêche l'envoi normal du formulaire (pas de rechargement)
+    event.preventDefault();
+
+    let formulaireValide = true; // on suppose que tout est bon au départ
+
+    // ---------- Récupération des champs ----------
+    const fullName = document.getElementById("full-name");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const participationType = document.getElementById("participation-type");
+    const country = document.getElementById("country");
+    const message = document.getElementById("message");
+
+    // ---------- Fonction utilitaire pour afficher une erreur ----------
+    function afficherErreur(champ, messageErreur) {
+      const erreurElement = document.getElementById(champ.id + "-error");
+      champ.classList.add("invalid");
+      champ.classList.remove("valid");
+      erreurElement.textContent = messageErreur;
+      formulaireValide = false;
+    }
+
+    // ---------- Fonction utilitaire pour valider un champ ----------
+    function marquerValide(champ) {
+      const erreurElement = document.getElementById(champ.id + "-error");
+      champ.classList.add("valid");
+      champ.classList.remove("invalid");
+      erreurElement.textContent = "";
+    }
+
+    // ---------- 1. Nom complet ----------
+    if (fullName.value.trim() === "") {
+      afficherErreur(fullName, "Le nom complet est obligatoire.");
+    } else {
+      marquerValide(fullName);
+    }
+
+    // ---------- 2. Email (vérifié par regex) ----------
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value.trim() === "") {
+      afficherErreur(email, "L'adresse email est obligatoire.");
+    } else if (!regexEmail.test(email.value.trim())) {
+      afficherErreur(email, "Veuillez entrer une adresse email valide.");
+    } else {
+      marquerValide(email);
+    }
+
+    // ---------- 3. Téléphone (minimum 8 chiffres) ----------
+    const chiffresTelephone = phone.value.replace(/\D/g, ""); // on garde uniquement les chiffres
+    if (phone.value.trim() === "") {
+      afficherErreur(phone, "Le numéro de téléphone est obligatoire.");
+    } else if (chiffresTelephone.length < 8) {
+      afficherErreur(phone, "Le téléphone doit contenir au moins 8 chiffres.");
+    } else {
+      marquerValide(phone);
+    }
+
+    // ---------- 4. Type de participation ----------
+    if (participationType.value === "") {
+      afficherErreur(participationType, "Veuillez choisir un type de participation.");
+    } else {
+      marquerValide(participationType);
+    }
+
+    // ---------- 5. Pays ----------
+    if (country.value === "") {
+      afficherErreur(country, "Veuillez choisir votre pays.");
+    } else {
+      marquerValide(country);
+    }
+
+    // ---------- 6. Message (minimum 20 caractères) ----------
+    if (message.value.trim() === "") {
+      afficherErreur(message, "Le message est obligatoire.");
+    } else if (message.value.trim().length < 20) {
+      afficherErreur(message, "Le message doit contenir au moins 20 caractères.");
+    } else {
+      marquerValide(message);
+    }
+
+    // ---------- Résultat final ----------
+    if (formulaireValide) {
+      // On affiche le message de succès
+      const successMessage = document.getElementById("form-success");
+      successMessage.classList.add("show");
+
+      // On réinitialise le formulaire
+      form.reset();
+
+      // On enlève les classes valid/invalid restantes après reset
+      const champs = form.querySelectorAll("input, select, textarea");
+      champs.forEach(function (champ) {
+        champ.classList.remove("valid");
+        champ.classList.remove("invalid");
+      });
+
+      // On masque le message de succès après quelques secondes
+      setTimeout(function () {
+        successMessage.classList.remove("show");
+      }, 4000);
+    }
+  });
+}
